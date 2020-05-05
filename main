@@ -1,0 +1,35 @@
+class Main 
+{
+  public static void main(String[] args) 
+  {
+    commaRecursion("123");
+    commaRecursion("1087045");
+    commaRecursion("1");
+    commaRecursion("12");
+    commaRecursion("1000");
+  }
+  public static void commaRecursion(String numInput) 
+  {
+    try
+    {
+      int check = Integer.parseInt(numInput); // checks to see if input is an integer, if it isn't jumps to the catch statement
+      System.out.print(numInput.charAt(0)); // prints the first character of the input 
+        if (numInput.length() == 1) // base case 
+        {
+          System.out.print("\n");
+        }
+        else 
+        {
+          if (((numInput.length()-1) % 3) == 0) // places a comma where it belongs in an integer 
+          {
+            System.out.print(",");
+          }
+            commaRecursion(numInput.substring(1)); // starts from the next character of the input
+        }
+    }
+    catch(Exception e) 
+    {
+      System.out.println("Something went wrong, " + numInput + " should be in integer form!"); // code leaves the try, and displays an error message 
+    }
+  }
+}
